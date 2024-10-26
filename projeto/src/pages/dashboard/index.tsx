@@ -3,6 +3,8 @@ import styles from './styles.module.css';
 import Head from 'next/head';
 import { getSession } from 'next-auth/react';
 import { Textarea } from '../../components/textarea';
+import { FiShare2 } from 'react-icons/fi';
+import { FaTrash } from 'react-icons/fa';
 
 export default function Dashboard() {
     return (
