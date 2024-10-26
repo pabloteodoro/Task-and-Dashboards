@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './styles.module.css';
 import Head from 'next/head';
 import { getSession } from 'next-auth/react';
@@ -16,6 +16,14 @@ export default function Dashboard() {
 
     }
 
+    function handleRegisterTask(event: FormEvent) {
+        event.preventDefault();
+
+        if(input === " ") return;
+
+        alert("Teste");
+    }
+
 
     return (
         <div className={styles.container}>
@@ -27,7 +35,7 @@ export default function Dashboard() {
                     <div className={styles.contentForm}>
                     <h1 className={styles.title}>Qual a sua Tarefa?</h1>
                     
-                    <form>
+                    <form onSubmit={handleRegisterTask}>
                         <Textarea placeholder="Digite qual a sua tarefa..."
                         value={input}
                         onChange={(event:ChangeEvent<HTMLTextAreaElement>) => setInput(event.target.value) }/>
