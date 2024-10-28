@@ -7,7 +7,16 @@ import { Textarea } from '../../components/textarea';
 import { FiShare2 } from 'react-icons/fi';
 import { FaTrash } from 'react-icons/fa';
 
-export default function Dashboard() {
+import { db } from '../../services/firebaseConnection'
+import { addDoc, collection } from 'firebase/firestore';
+
+interface HomeProps {
+    user: {
+        email: string;
+    }
+}
+
+export default function Dashboard({user}: HomeProps) {
     const [input, setInput] = useState("")
     const [publicTask, setPublicTask] = useState(false);
 
@@ -16,12 +25,26 @@ export default function Dashboard() {
 
     }
 
-    function handleRegisterTask(event: FormEvent) {
+    async function handleRegisterTask(event: FormEvent) {
         event.preventDefault();
 
         if(input === " ") return;
 
-        alert("Teste");
+        try{
+            await addDoc(collection(db, 'tasks'), {
+            tarefa: input,
+            created: new Date(),
+            user: user?.email,
+            public: publicTask
+            
+            });
+
+            setInput("")
+            setPublicTask(false);
+
+        } catch(err) {
+            console.error(err);
+        }
     }
 
 
@@ -92,6 +115,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     }
 
     return {
-        props: {},
+        props: {
+            user: {
+                email: session?.user.email,
+            }
+        },
     };
 };
