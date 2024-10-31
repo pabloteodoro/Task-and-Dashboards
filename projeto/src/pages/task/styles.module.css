@@ -31,3 +31,26 @@
     white-space: pre-wrap;
     width: 100%;
 }
+
+.commentsContainer {
+    margin: 18px 0;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.commentsContainer h2 {
+    margin: 14px 0;
+
+
+}
+
+.button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #3183ff;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}

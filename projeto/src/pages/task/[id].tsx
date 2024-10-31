@@ -39,7 +39,7 @@ export default function Task({ item }: TaskProps) {
                     placeholder="Digite o seu comentário..."
                     
                     />
-                    <button className={styles.button}>Comentar</button>
+                    <button className={styles.button}>Enviar Comentário</button>
                 </form>
 
             </section>
