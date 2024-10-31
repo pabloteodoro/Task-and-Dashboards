@@ -54,3 +54,10 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+.button:disabled {
+    cursor: not-allowed;
+    background-color: rgba(49, 131, 255, 0.604);
+
+
+}
